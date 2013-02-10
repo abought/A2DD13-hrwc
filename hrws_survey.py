@@ -29,7 +29,7 @@ with open('species.csv', 'rU') as f:
     	survey_dict[row[0]] = [0 for i in range(1478)]
         row = row[5:]
         for item in row:
-        	all_species.add(item.lower()) # s.t. no duplicates due to manual-entry capitalization issues
+        	all_species.add(item) # s.t. no duplicates due to manual-entry capitalization issues
             # (intended for interactive map, thus capitalization not explicitly necessary at this juncture)
 
 
@@ -51,7 +51,7 @@ with open('species.csv', 'rU') as f:
     	if i==0:
     		i=1
     		continue
-    	key = row[1] # bioreserve id
+    	key = row[0] # bioreserve id
     	row = row[5:]
     	for item in row:
     		if item!='':
