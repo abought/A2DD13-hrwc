@@ -24,10 +24,11 @@ with open('species.csv', 'rU') as f:
     	if i==0:
     		i=1
     		continue
-    	survey_dict[row[0]] = [0]*1478
+    	survey_dict[row[0]] = [0 for i in range(1478)]
         row = row[5:]
         for item in row:
-        	all_species.add(item)
+        	all_species.add(item.lower()) # s.t. no duplicates due to manual-entry capitalization issues
+            # (intended for interactive map, thus capitalization not explicitly necessary at this juncture)
 
 
 for item in all_species:
