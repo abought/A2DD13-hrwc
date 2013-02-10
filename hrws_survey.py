@@ -34,7 +34,7 @@ with open('species.csv', 'rU') as f:
 for item in all_species:
 	all_species_sort.append(item)
 
-all_species_sort = sorted(all_species_sort)
+all_species_sort = sorted(all_species)
 all_species_sort = all_species_sort[1:]
 
 j=0
@@ -49,7 +49,7 @@ with open('species.csv', 'rU') as f:
     	if i==0:
     		i=1
     		continue
-    	key = row[0]
+    	key = row[1] # bioreserve id
     	row = row[5:]
     	for item in row:
     		if item!='':
