@@ -8,6 +8,8 @@
 # intended for creation of interactive map
 # TODO: map [GIS, d3]
 
+# TODO: test duplication control
+
 from __future__ import print_function
 import csv
 
