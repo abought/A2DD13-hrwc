@@ -1,16 +1,20 @@
-# code written and discussed by @nickkrabbenhoeft, @bernease
-# refactoring intended
-
-# TODO: refactor!
-
-# code for the Huron Valley Watershed Council 
-# separate out species list
-# intended for creation of interactive map
+# code written for use by/for the Huron Valley Watershed Council (A2 DataDive 2013)
+# separates out species list; intended for creation of interactive map
 # TODO: map [GIS, d3]
 
-# TODO: test duplication control
+# README (in-comments):
+# code written and discussed by @nickkrabbenhoeft, @bernease
+# refactoring intended (TODO?)
 
-from __future__ import print_function
+## NOTES:
+# test duplication control -- on examination, does not appear needed
+# final map can be spot-checked by ecologists/other workers or volunteers familiar with the data
+# if needed, script can be refactored to account for duplication fixes, etc.
+
+
+#################
+
+#from __future__ import print_function
 import csv
 
 all_species = set()
@@ -26,12 +30,11 @@ with open('species.csv', 'rU') as f:
     	if i==0:
     		i=1
     		continue
-    	survey_dict[row[0]] = [0 for i in range(1478)]
+    	survey_dict[row[0]] = [0 for x in range(1478)]
         row = row[5:]
         for item in row:
-        	all_species.add(item) # s.t. no duplicates due to manual-entry capitalization issues
-            # (intended for interactive map, thus capitalization not explicitly necessary at this juncture)
-
+        	all_species.add(item) 
+            # dedupe control apparently not needed -- final map should be spot-checked by HVRC
 
 for item in all_species:
 	all_species_sort.append(item)
@@ -51,13 +54,13 @@ with open('species.csv', 'rU') as f:
     	if i==0:
     		i=1
     		continue
-    	key = row[0] # bioreserve id
+    	key = row[0] # bioreserve id? 
     	row = row[5:]
     	for item in row:
     		if item!='':
     			survey_dict[key][species_key[item]] = 1
 
-f = open('survey_species.csv','wb')
+f = open('survey_species.tsv','wb')
 f.write('id')
 for item in all_species_sort:
 	f.write(',')
